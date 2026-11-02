@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=794, user-scalable=yes">
 <title>Maulana Restaurant — Speisekarte</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -930,28 +930,8 @@ img {
   }
 }
 </style>
-<style>
-#pg-wrap { transform-origin: top left; width: 794px; }
-body { margin: 0; overflow-x: hidden; }
-</style>
-<script>
-(function(){
-  var W = 794;
-  function applyScale(){
-    var vw = window.innerWidth || document.documentElement.clientWidth;
-    var wrap = document.getElementById('pg-wrap');
-    if(!wrap) return;
-    var sc = vw >= W ? 1 : vw / W;
-    wrap.style.transform = 'scale(' + sc.toFixed(5) + ')';
-    document.body.style.height = Math.ceil(wrap.scrollHeight * sc) + 'px';
-  }
-  window.addEventListener('load', applyScale);
-  window.addEventListener('resize', applyScale);
-})();
-</script>
 </head>
 <body>
-<div id="pg-wrap">
 <div class="cover">
   <img class="cover-frame" src="images/frame.png" alt="">
   <div class="cover-content">
@@ -1763,6 +1743,5 @@ body { margin: 0; overflow-x: hidden; }
     </div>
   </div>
 </div>
-</div><!-- /pg-wrap -->
 </body>
 </html>
