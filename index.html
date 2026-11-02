@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=794">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maulana Restaurant — Speisekarte</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -930,6 +930,17 @@ img {
   }
 }
 </style>
+<script>
+(function(){
+  var scale = window.innerWidth / 794;
+  if(scale < 1){
+    document.documentElement.style.fontSize = '16px';
+    var s = document.createElement('style');
+    s.textContent = 'body{zoom:' + scale.toFixed(4) + '}';
+    document.head.appendChild(s);
+  }
+})();
+</script>
 </head>
 <body>
 
