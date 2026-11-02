@@ -930,27 +930,28 @@ img {
   }
 }
 </style>
+<style>
+#pg-wrap { transform-origin: top left; width: 794px; }
+body { margin: 0; overflow-x: hidden; }
+</style>
 <script>
 (function(){
   var W = 794;
-  var vw = window.innerWidth || document.documentElement.clientWidth;
-  if(vw >= W) return;
-  var sc = vw / W;
-  var el = document.createElement('style');
-  el.textContent =
-    'html{overflow-x:hidden}' +
-    'body{width:' + W + 'px;transform:scale(' + sc.toFixed(5) + ');transform-origin:top left;margin:0}';
-  document.head.appendChild(el);
-  function fixH(){
-    document.documentElement.style.height = Math.ceil(document.body.scrollHeight * sc) + 'px';
+  function applyScale(){
+    var vw = window.innerWidth || document.documentElement.clientWidth;
+    var wrap = document.getElementById('pg-wrap');
+    if(!wrap) return;
+    var sc = vw >= W ? 1 : vw / W;
+    wrap.style.transform = 'scale(' + sc.toFixed(5) + ')';
+    document.body.style.height = Math.ceil(wrap.scrollHeight * sc) + 'px';
   }
-  document.addEventListener('DOMContentLoaded', fixH);
-  window.addEventListener('load', fixH);
+  window.addEventListener('load', applyScale);
+  window.addEventListener('resize', applyScale);
 })();
 </script>
 </head>
 <body>
-
+<div id="pg-wrap">
 <div class="cover">
   <img class="cover-frame" src="images/frame.png" alt="">
   <div class="cover-content">
@@ -1762,5 +1763,6 @@ img {
     </div>
   </div>
 </div>
+</div><!-- /pg-wrap -->
 </body>
 </html>
