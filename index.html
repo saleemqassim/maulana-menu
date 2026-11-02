@@ -932,13 +932,20 @@ img {
 </style>
 <script>
 (function(){
-  var scale = window.innerWidth / 794;
-  if(scale < 1){
-    document.documentElement.style.fontSize = '16px';
-    var s = document.createElement('style');
-    s.textContent = 'body{zoom:' + scale.toFixed(4) + '}';
-    document.head.appendChild(s);
+  var W = 794;
+  var vw = window.innerWidth || document.documentElement.clientWidth;
+  if(vw >= W) return;
+  var sc = vw / W;
+  var el = document.createElement('style');
+  el.textContent =
+    'html{overflow-x:hidden}' +
+    'body{width:' + W + 'px;transform:scale(' + sc.toFixed(5) + ');transform-origin:top left;margin:0}';
+  document.head.appendChild(el);
+  function fixH(){
+    document.documentElement.style.height = Math.ceil(document.body.scrollHeight * sc) + 'px';
   }
+  document.addEventListener('DOMContentLoaded', fixH);
+  window.addEventListener('load', fixH);
 })();
 </script>
 </head>
