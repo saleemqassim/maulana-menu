@@ -619,6 +619,51 @@ button { cursor: pointer; }
   .mcs-tab { padding: .4rem .85rem; font-size: .62rem; }
 }
 
+/* Getränke Karten-Raster */
+.drink-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  padding-bottom: 2rem;
+}
+.drink-card {
+  background: rgba(201,168,76,.05);
+  border: 1px solid rgba(201,168,76,.14);
+  border-radius: 8px;
+  padding: 1.4rem 1rem 1.1rem;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: .6rem;
+  transition: border-color .2s, background .2s;
+}
+.drink-card:hover {
+  border-color: rgba(201,168,76,.32);
+  background: rgba(201,168,76,.08);
+}
+.drink-card img {
+  width: 90px; height: 90px; object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.5));
+}
+.drink-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 600; font-style: italic;
+  color: #f4eacc; line-height: 1.2;
+}
+.drink-card-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .88rem; font-style: italic;
+  color: rgba(244,234,204,.45); line-height: 1.5; flex: 1;
+}
+.drink-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.28);
+  border-radius: 999px; padding: .2rem .9rem;
+  margin-top: .3rem;
+}
+@media (max-width: 860px) { .drink-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .drink-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; } }
+
 /* PDF + QR band */
 .pdf-band {
   display: flex; align-items: stretch; justify-content: space-between;
@@ -1045,10 +1090,6 @@ footer {
         <button class="lang-opt" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button>
       </div>
     </div>
-    <a href="tel:01784858800" class="nav-tel">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.63 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-      <span>0178 485 8800</span>
-    </a>
   </div>
 </nav>
 
@@ -1655,66 +1696,49 @@ footer {
       <span class="menu-sec-title" data-i18n="cat_getraenke">Getränke</span>
       <span class="menu-sec-count">Säfte · Softdrinks · Tee · Wasser</span>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_mlassi_n">Mango Lassi</div>
-        <div class="menu-item-desc" data-i18n="m_mlassi_d">Cremiger Joghurt-Shake mit Mango</div>
-        <div class="menu-item-footer"><span class="menu-item-price">4,00 €</span></div>
+    <div class="drink-grid">
+      <div class="drink-card">
+        <img src="images/lassi_smoothie.png" alt="Mango Lassi" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_mlassi_n">Mango Lassi</div>
+        <div class="drink-card-desc" data-i18n="m_mlassi_d">Cremiger Joghurt-Shake mit Mango</div>
+        <div class="drink-card-price">4,00 €</div>
       </div>
-      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Lassi" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_alassi_n">Afghan Lassi</div>
-        <div class="menu-item-desc" data-i18n="m_alassi_d">Traditioneller Joghurt-Drink nach afghanischer Art</div>
-        <div class="menu-item-footer"><span class="menu-item-price">3,00 €</span></div>
+      <div class="drink-card">
+        <img src="images/lassi_smoothie.png" alt="Afghan Lassi" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_alassi_n">Afghan Lassi</div>
+        <div class="drink-card-desc" data-i18n="m_alassi_d">Traditioneller Joghurt-Drink nach afghanischer Art</div>
+        <div class="drink-card-price">3,00 €</div>
       </div>
-      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Afghan Lassi" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_frucht_n">Fruchtsäfte</div>
-        <div class="menu-item-desc" data-i18n="m_frucht_d">Mango, Ananas, Banane, Mix, frisch gepresster Orangen- oder Apfelsaft</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 4,50 €</span></div>
+      <div class="drink-card">
+        <img src="images/saft_limo_mango_nobg.png" alt="Fruchtsäfte" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_frucht_n">Fruchtsäfte</div>
+        <div class="drink-card-desc" data-i18n="m_frucht_d">Mango, Ananas, Banane, Mix, Orangen- oder Apfelsaft</div>
+        <div class="drink-card-price">ab 4,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/saft_limo_mango_nobg.png" alt="Säfte" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_soft_n">Softdrinks</div>
-        <div class="menu-item-desc" data-i18n="m_soft_d">Coca-Cola, Cola Zero, Fanta, Sprite, Mezzo Mix, Red Bull — 0,33 l</div>
-        <div class="menu-item-footer"><span class="menu-item-price">2,50 €</span></div>
+      <div class="drink-card">
+        <img src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_soft_n">Softdrinks</div>
+        <div class="drink-card-desc" data-i18n="m_soft_d">Cola, Cola Zero, Fanta, Sprite, Mezzo Mix, Red Bull</div>
+        <div class="drink-card-price">2,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_tee_n">Afghan Tee</div>
-        <div class="menu-item-desc" data-i18n="m_tee_d">Grüner Tee, Schwarzer Tee oder Afghanischer Milchtee (Sheer Chai)</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
+      <div class="drink-card">
+        <img src="images/tee_cups.png" alt="Afghan Tee" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_tee_n">Afghan Tee</div>
+        <div class="drink-card-desc" data-i18n="m_tee_d">Grüner Tee, Schwarzer Tee oder Sheer Chai</div>
+        <div class="drink-card-price">ab 1,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/tee_cups.png" alt="Tee" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_wasser_n">Mineralwasser</div>
-        <div class="menu-item-desc" data-i18n="m_wasser_d">Still oder Sprudel</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
+      <div class="drink-card">
+        <img src="images/wasser_hassia.png" alt="Mineralwasser" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-card-name" data-i18n="m_wasser_n">Mineralwasser</div>
+        <div class="drink-card-desc" data-i18n="m_wasser_d">Still oder Sprudel</div>
+        <div class="drink-card-price">ab 1,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/wasser_hassia.png" alt="Wasser" loading="lazy" onerror="this.style.display='none'">
     </div>
   </div>
 
-  <!-- PDF Download -->
+  <!-- QR-Code -->
   <div class="pdf-band">
-    <a class="pdf-band-pdf" href="speisekarte.pdf" target="_blank">
-      <div class="pdf-band-left">
-        <span class="pdf-band-title" data-i18n="pdf_title">Vollständige Speisekarte als PDF</span>
-        <span class="pdf-band-sub" data-i18n="pdf_sub">Herunterladen oder drucken</span>
-      </div>
-      <div class="pdf-band-arrow">↓</div>
-    </a>
-    <div class="pdf-band-qr">
+    <div class="pdf-band-qr" style="margin:0 auto;padding:1.6rem 2rem;">
       <div class="pdf-band-qr-box" id="menuQrCode"></div>
       <div class="pdf-band-qr-info">
         <span class="pdf-band-qr-label">QR-Code Speisekarte</span>
