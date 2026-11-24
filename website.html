@@ -626,50 +626,6 @@ button { cursor: pointer; }
   .mcs-tab { padding: .4rem .85rem; font-size: .62rem; }
 }
 
-/* Getränke Karten-Raster */
-.drink-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  padding-bottom: 2rem;
-}
-.drink-card {
-  background: rgba(201,168,76,.05);
-  border: 1px solid rgba(201,168,76,.14);
-  border-radius: 8px;
-  padding: 1.4rem 1rem 1.1rem;
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; gap: .6rem;
-  transition: border-color .2s, background .2s;
-}
-.drink-card:hover {
-  border-color: rgba(201,168,76,.32);
-  background: rgba(201,168,76,.08);
-}
-.drink-card img {
-  width: 90px; height: 90px; object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,.5));
-}
-.drink-card-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem; font-weight: 600; font-style: italic;
-  color: #f4eacc; line-height: 1.2;
-}
-.drink-card-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: .88rem; font-style: italic;
-  color: rgba(244,234,204,.45); line-height: 1.5; flex: 1;
-}
-.drink-card-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; font-weight: 600;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.28);
-  border-radius: 999px; padding: .2rem .9rem;
-  margin-top: .3rem;
-}
-@media (max-width: 860px) { .drink-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .drink-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; } }
 
 /* PDF + QR band */
 .pdf-band {
@@ -1725,43 +1681,53 @@ footer {
       <span class="menu-sec-title" data-i18n="cat_getraenke">Getränke</span>
       <span class="menu-sec-count">Säfte · Softdrinks · Tee · Wasser</span>
     </div>
-    <div class="drink-grid">
-      <div class="drink-card">
-        <img src="images/lassi_smoothie.png" alt="Mango Lassi" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_mlassi_n">Mango Lassi</div>
-        <div class="drink-card-desc" data-i18n="m_mlassi_d">Cremiger Joghurt-Shake mit Mango</div>
-        <div class="drink-card-price">4,00 €</div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_mlassi_n">Mango Lassi</div>
+        <div class="menu-item-desc" data-i18n="m_mlassi_d">Cremiger Joghurt-Shake mit Mango</div>
+        <div class="menu-item-footer"><span class="menu-item-price">4,00 €</span></div>
       </div>
-      <div class="drink-card">
-        <img src="images/lassi_smoothie.png" alt="Afghan Lassi" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_alassi_n">Afghan Lassi</div>
-        <div class="drink-card-desc" data-i18n="m_alassi_d">Traditioneller Joghurt-Drink nach afghanischer Art</div>
-        <div class="drink-card-price">3,00 €</div>
+      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Mango Lassi" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_alassi_n">Afghan Lassi</div>
+        <div class="menu-item-desc" data-i18n="m_alassi_d">Traditioneller Joghurt-Drink nach afghanischer Art</div>
+        <div class="menu-item-footer"><span class="menu-item-price">3,00 €</span></div>
       </div>
-      <div class="drink-card">
-        <img src="images/saft_limo_mango_nobg.png" alt="Fruchtsäfte" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_frucht_n">Fruchtsäfte</div>
-        <div class="drink-card-desc" data-i18n="m_frucht_d">Mango, Ananas, Banane, Mix, Orangen- oder Apfelsaft</div>
-        <div class="drink-card-price">ab 4,50 €</div>
+      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Afghan Lassi" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_frucht_n">Fruchtsäfte</div>
+        <div class="menu-item-desc" data-i18n="m_frucht_d">Mango, Ananas, Banane, Mix, Orangen- oder Apfelsaft</div>
+        <div class="menu-item-footer"><span class="menu-item-price">ab 4,50 €</span></div>
       </div>
-      <div class="drink-card">
-        <img src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_soft_n">Softdrinks</div>
-        <div class="drink-card-desc" data-i18n="m_soft_d">Cola, Cola Zero, Fanta, Sprite, Mezzo Mix, Red Bull</div>
-        <div class="drink-card-price">2,50 €</div>
+      <img class="menu-item-img" src="images/saft_limo_mango_nobg.png" alt="Fruchtsäfte" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_soft_n">Softdrinks</div>
+        <div class="menu-item-desc" data-i18n="m_soft_d">Cola, Cola Zero, Fanta, Sprite, Mezzo Mix, Red Bull</div>
+        <div class="menu-item-footer"><span class="menu-item-price">2,50 €</span></div>
       </div>
-      <div class="drink-card">
-        <img src="images/tee_cups.png" alt="Afghan Tee" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_tee_n">Afghan Tee</div>
-        <div class="drink-card-desc" data-i18n="m_tee_d">Grüner Tee, Schwarzer Tee oder Sheer Chai</div>
-        <div class="drink-card-price">ab 1,50 €</div>
+      <img class="menu-item-img" src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_tee_n">Afghan Tee</div>
+        <div class="menu-item-desc" data-i18n="m_tee_d">Grüner Tee, Schwarzer Tee oder Sheer Chai</div>
+        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
       </div>
-      <div class="drink-card">
-        <img src="images/wasser_hassia.png" alt="Mineralwasser" loading="lazy" onerror="this.style.display='none'">
-        <div class="drink-card-name" data-i18n="m_wasser_n">Mineralwasser</div>
-        <div class="drink-card-desc" data-i18n="m_wasser_d">Still oder Sprudel</div>
-        <div class="drink-card-price">ab 1,50 €</div>
+      <img class="menu-item-img" src="images/tee_cups.png" alt="Afghan Tee" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <div class="menu-item-name" data-i18n="m_wasser_n">Mineralwasser</div>
+        <div class="menu-item-desc" data-i18n="m_wasser_d">Still oder Sprudel</div>
+        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
       </div>
+      <img class="menu-item-img" src="images/wasser_hassia.png" alt="Mineralwasser" loading="lazy" onerror="this.style.display='none'">
     </div>
   </div>
 
@@ -1918,8 +1884,12 @@ footer {
     </div>
     <div class="social-row">
       <a href="https://www.instagram.com/maulana.restaurant" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        @maulana.restaurant
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@maulana.restaurant" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/></svg>
+        TikTok
       </a>
     </div>
   </div>
