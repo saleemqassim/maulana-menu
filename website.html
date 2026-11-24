@@ -357,6 +357,33 @@ button { cursor: pointer; }
   display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
   animation: heroFadeIn 1.8s .7s ease both;
 }
+/* Hero inline navigation */
+.hero-nav {
+  display: flex; align-items: center; flex-wrap: wrap; justify-content: center;
+  gap: 0; margin-top: .2rem;
+  animation: heroFadeIn 1.8s .7s ease both;
+}
+.hero-nav-link {
+  font-family: 'Lato', sans-serif;
+  font-size: .58rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase;
+  color: rgba(201,168,76,.5);
+  padding: .65rem 1rem;
+  min-height: 44px; display: inline-flex; align-items: center;
+  transition: color .28s;
+  position: relative;
+}
+.hero-nav-link::after {
+  content: ''; position: absolute; bottom: 6px; left: 1rem; right: 1rem;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); opacity: 0;
+  transition: transform .28s cubic-bezier(.4,0,.2,1), opacity .28s;
+}
+.hero-nav-link:hover { color: var(--gold); }
+.hero-nav-link:hover::after { transform: scaleX(1); opacity: .55; }
+.hero-nav-sep {
+  color: rgba(201,168,76,.18); font-size: .75rem; user-select: none;
+  line-height: 1;
+}
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -425,6 +452,8 @@ button { cursor: pointer; }
   .hero-orn  { font-size: .5rem; margin: .5rem 0 .4rem; }
   .hero-scroll-btn span { font-size: .48rem; }
   .hero-location { font-size: .52rem; letter-spacing: .28em; }
+  .hero-nav-link { font-size: .52rem; letter-spacing: .22em; padding: .55rem .7rem; }
+  .hero-nav-sep  { font-size: .65rem; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -550,7 +579,7 @@ button { cursor: pointer; }
 }
 .mcs-strip::-webkit-scrollbar { display: none; }
 .mcs-inner {
-  display: flex; padding: 0 2rem;
+  display: flex; padding: 0 1rem; justify-content: center;
   max-width: 1100px; margin: 0 auto;
   align-items: stretch; height: 58px;
   gap: 0;
@@ -707,7 +736,7 @@ button { cursor: pointer; }
   border-bottom: 1px solid rgba(201,168,76,.2); margin-bottom: .4rem;
 }
 .drink-section-img {
-  width: 72px; height: 72px; object-fit: contain; flex-shrink: 0;
+  width: 96px; height: 96px; object-fit: contain; flex-shrink: 0;
   filter: drop-shadow(0 3px 10px rgba(0,0,0,.5));
 }
 .drink-section-title {
@@ -1279,10 +1308,15 @@ footer {
       <p class="hero-sub">Restaurant</p>
       <span class="hero-sup" data-i18n="hero_sup">Frankfurt am Main &nbsp;·&nbsp; 100 % Halal</span>
       <div class="hero-orn">—————&nbsp;&nbsp;✦&nbsp;&nbsp;—————</div>
-      <div class="hero-cta">
-        <a href="#speisekarte" class="btn-primary" data-i18n="hero_cta_primary">Unsere Speisekarte</a>
-        <a href="#info" class="btn-outline" data-i18n="hero_cta_outline">Uns finden</a>
-      </div>
+      <nav class="hero-nav" aria-label="Seitennavigation">
+        <a href="#speisekarte" class="hero-nav-link" data-i18n="nav_menu">Speisekarte</a>
+        <span class="hero-nav-sep" aria-hidden="true">·</span>
+        <a href="#catering" class="hero-nav-link" data-i18n="nav_catering">Catering</a>
+        <span class="hero-nav-sep" aria-hidden="true">·</span>
+        <a href="#about" class="hero-nav-link" data-i18n="nav_about">Über uns</a>
+        <span class="hero-nav-sep" aria-hidden="true">·</span>
+        <a href="#info" class="hero-nav-link" data-i18n="nav_contact">Kontakt</a>
+      </nav>
     </div>
 
   </div>
@@ -1369,7 +1403,6 @@ footer {
         <div class="menu-item-desc" data-i18n="m_aburger_d">Afghanisches Brot mit Lammhack, Pommes, Salat, Gurke und Ei</div>
         <div class="menu-item-footer">
           <span class="menu-item-price">6,99 €</span>
-          <span class="menu-item-badge badge-pop" data-i18n="badge_pop">Beliebt</span>
         </div>
       </div>
       <img class="menu-item-img" src="images/afghan_burger.png" alt="Afghan Burger" loading="lazy" onerror="this.style.display='none'">
@@ -1418,7 +1451,6 @@ footer {
         <div class="menu-item-desc" data-i18n="m_durum_d">Im Fladenbrot gerolltes Dönerfleisch mit Salat und Soße</div>
         <div class="menu-item-footer">
           <span class="menu-item-price">8,99 €</span>
-          <span class="menu-item-badge badge-pop" data-i18n="badge_fav">Favorit</span>
         </div>
       </div>
       <img class="menu-item-img" src="images/objekt_30.png" alt="Durum Döner" loading="lazy" onerror="this.style.display='none'">
@@ -1587,7 +1619,6 @@ footer {
         <div class="menu-item-desc" data-i18n="m_kabuli_d">Duftender Basmati-Reis mit zartem Kalbfleisch, karamellisierten Karotten &amp; Rosinen</div>
         <div class="menu-item-footer">
           <span class="menu-item-price">12,99 €</span>
-          <span class="menu-item-badge badge-pop" data-i18n="badge_hk">Hausklassiker</span>
         </div>
       </div>
       <img class="menu-item-img" src="images/objekt_20.png" alt="Kabuli Palau" loading="lazy" onerror="this.style.display='none'">
