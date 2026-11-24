@@ -445,7 +445,7 @@ button { cursor: pointer; }
   transition: opacity .4s ease, transform .4s ease;
 }
 .featured-slide img {
-  width: 220px; height: 220px; object-fit: contain;
+  width: 280px; height: 280px; object-fit: contain;
   filter: drop-shadow(0 10px 30px rgba(0,0,0,.6))
           drop-shadow(0 0 60px rgba(201,168,76,.12));
   animation: floatDish 5s ease-in-out infinite;
@@ -500,7 +500,7 @@ button { cursor: pointer; }
 .featured-dot.active { background: var(--gold); transform: scale(1.5); }
 
 @media (max-width: 600px) {
-  .featured-slide img { width: 160px; height: 160px; }
+  .featured-slide img { width: 200px; height: 200px; }
   .featured-sec { padding: 3.5rem 1.2rem 3.5rem; }
 }
 
@@ -1226,18 +1226,18 @@ footer {
 
     <div class="featured-showcase" id="featuredShowcase">
       <div class="featured-slide">
-        <img src="images/palau_kishmish.png" alt="Kabuli Palau" loading="eager">
-        <span class="featured-slide-badge">Nationalgericht</span>
-        <div class="featured-slide-name">Kabuli Palau</div>
-        <div class="featured-slide-desc">Reis mit zartem Kalbfleisch, karamellisierten Karotten &amp; Rosinen — das Herzstück afghanischer Küche</div>
-        <span class="featured-slide-price">auf Anfrage</span>
-      </div>
-      <div class="featured-slide">
         <img src="images/mix_grill_4.png" alt="Mix Grill" loading="eager">
         <span class="featured-slide-badge">Bestseller</span>
         <div class="featured-slide-name">Mix Grill</div>
         <div class="featured-slide-desc">Gemischte Grillplatte mit Lammkebab, Hähnchenbrust &amp; Lammspieß — frisch vom Holzkohlegrill</div>
         <span class="featured-slide-price">ab 24,99 €</span>
+      </div>
+      <div class="featured-slide">
+        <img src="images/palau_kishmish.png" alt="Kabuli Palau" loading="eager">
+        <span class="featured-slide-badge">Nationalgericht</span>
+        <div class="featured-slide-name">Kabuli Palau</div>
+        <div class="featured-slide-desc">Reis mit zartem Kalbfleisch, karamellisierten Karotten &amp; Rosinen — das Herzstück afghanischer Küche</div>
+        <span class="featured-slide-price">auf Anfrage</span>
       </div>
       <div class="featured-slide">
         <img src="images/biryani.png" alt="Biryani" loading="eager">
@@ -1246,13 +1246,6 @@ footer {
         <div class="featured-slide-desc">Duftender Basmati-Reis mit Hähnchen, Safran &amp; traditionellen Gewürzen nach Familienrezept</div>
         <span class="featured-slide-price">ab 14,99 €</span>
       </div>
-      <div class="featured-slide">
-        <img src="images/pacha.png" alt="Pacha" loading="eager" onerror="this.src='images/objekt_17.png'">
-        <span class="featured-slide-badge">Spezialität</span>
-        <div class="featured-slide-name">Pacha</div>
-        <div class="featured-slide-desc">Zartes Schafskopffleisch, stundenlang langsam geschmort — eine Delikatesse für wahre Kenner</div>
-        <span class="featured-slide-price">ab 19,99 €</span>
-      </div>
     </div>
 
     <div class="featured-progress"><div class="featured-progress-bar" id="featuredBar"></div></div>
@@ -1260,7 +1253,6 @@ footer {
       <button class="featured-dot active" aria-label="Gericht 1"></button>
       <button class="featured-dot" aria-label="Gericht 2"></button>
       <button class="featured-dot" aria-label="Gericht 3"></button>
-      <button class="featured-dot" aria-label="Gericht 4"></button>
     </div>
   </div>
 </section>
