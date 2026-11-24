@@ -628,30 +628,37 @@ button { cursor: pointer; }
 
 
 /* Getränke Unterkategorien */
-.drink-section { margin-bottom: 2rem; }
+.drink-section { margin-bottom: 2.2rem; }
+.drink-section-head {
+  display: flex; align-items: center; gap: 1.1rem;
+  padding-bottom: .7rem;
+  border-bottom: 1px solid rgba(201,168,76,.18); margin-bottom: .3rem;
+}
+.drink-section-img {
+  width: 56px; height: 56px; object-fit: contain; flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45));
+}
 .drink-section-title {
-  font-family: 'Lato', sans-serif; font-size: .6rem; font-weight: 700;
+  font-family: 'Lato', sans-serif; font-size: .62rem; font-weight: 700;
   letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(201,168,76,.5); padding: .6rem 0 .5rem;
-  border-bottom: 1px solid rgba(201,168,76,.12); margin-bottom: .2rem;
+  color: rgba(201,168,76,.65);
 }
 .drink-row {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 1rem; padding: .65rem 0;
+  display: flex; align-items: baseline; gap: .5rem; padding: .62rem 0;
   border-bottom: 1px solid rgba(201,168,76,.07);
 }
 .drink-row:last-child { border-bottom: none; }
 .drink-row-name {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 400;
-  color: #f4eacc; flex: 1;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400;
+  color: #f4eacc;
 }
 .drink-row-desc {
-  font-family: 'Cormorant Garamond', serif; font-size: .82rem; font-style: italic;
-  color: rgba(244,234,204,.4); display: block; margin-top: 1px;
+  font-family: 'Cormorant Garamond', serif; font-size: .8rem; font-style: italic;
+  color: rgba(244,234,204,.38); display: block; margin-top: 1px;
 }
 .drink-row-dots {
-  flex: 1; border-bottom: 1px dotted rgba(201,168,76,.18);
-  min-width: 20px; margin: 0 .6rem .3rem;
+  flex: 1; border-bottom: 1px dotted rgba(201,168,76,.16);
+  min-width: 16px; margin-bottom: .28rem;
 }
 .drink-row-price {
   font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600;
@@ -1714,7 +1721,10 @@ footer {
     </div>
     <!-- Lassi & Shakes -->
     <div class="drink-section">
-      <div class="drink-section-title">Lassi &amp; Shakes</div>
+      <div class="drink-section-head">
+        <img class="drink-section-img" src="images/lassi_smoothie.png" alt="Lassi" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-section-title">Lassi &amp; Shakes</div>
+      </div>
       <div class="drink-row">
         <div>
           <div class="drink-row-name">Mango Lassi</div>
@@ -1735,7 +1745,10 @@ footer {
 
     <!-- Säfte -->
     <div class="drink-section">
-      <div class="drink-section-title">Säfte</div>
+      <div class="drink-section-head">
+        <img class="drink-section-img" src="images/saft_limo_mango_nobg.png" alt="Säfte" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-section-title">Säfte</div>
+      </div>
       <div class="drink-row">
         <div>
           <div class="drink-row-name">Mango</div>
@@ -1783,7 +1796,10 @@ footer {
 
     <!-- Softdrinks -->
     <div class="drink-section">
-      <div class="drink-section-title">Softdrinks</div>
+      <div class="drink-section-head">
+        <img class="drink-section-img" src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-section-title">Softdrinks</div>
+      </div>
       <div class="drink-row">
         <div><div class="drink-row-name">Cola</div></div>
         <div class="drink-row-dots"></div>
@@ -1818,7 +1834,10 @@ footer {
 
     <!-- Tee & Kaffee -->
     <div class="drink-section">
-      <div class="drink-section-title">Tee &amp; Kaffee</div>
+      <div class="drink-section-head">
+        <img class="drink-section-img" src="images/tee_cups.png" alt="Tee" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-section-title">Tee &amp; Kaffee</div>
+      </div>
       <div class="drink-row">
         <div>
           <div class="drink-row-name">Grüner Tee</div>
@@ -1845,7 +1864,10 @@ footer {
 
     <!-- Wasser -->
     <div class="drink-section">
-      <div class="drink-section-title">Wasser</div>
+      <div class="drink-section-head">
+        <img class="drink-section-img" src="images/wasser_hassia.png" alt="Wasser" loading="lazy" onerror="this.style.display='none'">
+        <div class="drink-section-title">Wasser</div>
+      </div>
       <div class="drink-row">
         <div><div class="drink-row-name">Mineralwasser Still</div></div>
         <div class="drink-row-dots"></div>
