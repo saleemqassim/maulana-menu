@@ -627,6 +627,37 @@ button { cursor: pointer; }
 }
 
 
+/* Getränke Unterkategorien */
+.drink-section { margin-bottom: 2rem; }
+.drink-section-title {
+  font-family: 'Lato', sans-serif; font-size: .6rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(201,168,76,.5); padding: .6rem 0 .5rem;
+  border-bottom: 1px solid rgba(201,168,76,.12); margin-bottom: .2rem;
+}
+.drink-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; padding: .65rem 0;
+  border-bottom: 1px solid rgba(201,168,76,.07);
+}
+.drink-row:last-child { border-bottom: none; }
+.drink-row-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 400;
+  color: #f4eacc; flex: 1;
+}
+.drink-row-desc {
+  font-family: 'Cormorant Garamond', serif; font-size: .82rem; font-style: italic;
+  color: rgba(244,234,204,.4); display: block; margin-top: 1px;
+}
+.drink-row-dots {
+  flex: 1; border-bottom: 1px dotted rgba(201,168,76,.18);
+  min-width: 20px; margin: 0 .6rem .3rem;
+}
+.drink-row-price {
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600;
+  color: var(--gold); white-space: nowrap; flex-shrink: 0;
+}
+
 /* PDF + QR band */
 .pdf-band {
   display: flex; align-items: stretch; justify-content: space-between;
@@ -1681,53 +1712,150 @@ footer {
       <span class="menu-sec-title" data-i18n="cat_getraenke">Getränke</span>
       <span class="menu-sec-count">Säfte · Softdrinks · Tee · Wasser</span>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_mlassi_n">Mango Lassi</div>
-        <div class="menu-item-desc" data-i18n="m_mlassi_d">Cremiger Joghurt-Shake mit Mango</div>
-        <div class="menu-item-footer"><span class="menu-item-price">4,00 €</span></div>
+    <!-- Lassi & Shakes -->
+    <div class="drink-section">
+      <div class="drink-section-title">Lassi &amp; Shakes</div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Mango Lassi</div>
+          <span class="drink-row-desc">Cremiger Joghurt-Shake mit Mango</span>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,00 €</div>
       </div>
-      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Mango Lassi" loading="lazy" onerror="this.style.display='none'">
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Afghan Lassi</div>
+          <span class="drink-row-desc">Traditioneller Joghurt-Drink nach afghanischer Art</span>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">3,00 €</div>
+      </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_alassi_n">Afghan Lassi</div>
-        <div class="menu-item-desc" data-i18n="m_alassi_d">Traditioneller Joghurt-Drink nach afghanischer Art</div>
-        <div class="menu-item-footer"><span class="menu-item-price">3,00 €</span></div>
+
+    <!-- Säfte -->
+    <div class="drink-section">
+      <div class="drink-section-title">Säfte</div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Mango</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/lassi_smoothie.png" alt="Afghan Lassi" loading="lazy" onerror="this.style.display='none'">
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Ananas</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Banane</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Mix-Saft</div>
+          <span class="drink-row-desc">Mango, Ananas &amp; Banane</span>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Orangensaft</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Apfelsaft</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">4,50 €</div>
+      </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_frucht_n">Fruchtsäfte</div>
-        <div class="menu-item-desc" data-i18n="m_frucht_d">Mango, Ananas, Banane, Mix, Orangen- oder Apfelsaft</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 4,50 €</span></div>
+
+    <!-- Softdrinks -->
+    <div class="drink-section">
+      <div class="drink-section-title">Softdrinks</div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Cola</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/saft_limo_mango_nobg.png" alt="Fruchtsäfte" loading="lazy" onerror="this.style.display='none'">
+      <div class="drink-row">
+        <div><div class="drink-row-name">Cola Zero</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Fanta</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Sprite</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Mezzo Mix</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Red Bull</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">3,50 €</div>
+      </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_soft_n">Softdrinks</div>
-        <div class="menu-item-desc" data-i18n="m_soft_d">Cola, Cola Zero, Fanta, Sprite, Mezzo Mix, Red Bull</div>
-        <div class="menu-item-footer"><span class="menu-item-price">2,50 €</span></div>
+
+    <!-- Tee & Kaffee -->
+    <div class="drink-section">
+      <div class="drink-section-title">Tee &amp; Kaffee</div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Grüner Tee</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">1,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/softdrinks_cola_mezzo_nobg.png" alt="Softdrinks" loading="lazy" onerror="this.style.display='none'">
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Schwarzer Tee</div>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">1,50 €</div>
+      </div>
+      <div class="drink-row">
+        <div>
+          <div class="drink-row-name">Sheer Chai</div>
+          <span class="drink-row-desc">Traditioneller afghansicher Milchtee mit Kardamom</span>
+        </div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">2,50 €</div>
+      </div>
     </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_tee_n">Afghan Tee</div>
-        <div class="menu-item-desc" data-i18n="m_tee_d">Grüner Tee, Schwarzer Tee oder Sheer Chai</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
+
+    <!-- Wasser -->
+    <div class="drink-section">
+      <div class="drink-section-title">Wasser</div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Mineralwasser Still</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">1,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/tee_cups.png" alt="Afghan Tee" loading="lazy" onerror="this.style.display='none'">
-    </div>
-    <div class="menu-item">
-      <div class="menu-item-info">
-        <div class="menu-item-name" data-i18n="m_wasser_n">Mineralwasser</div>
-        <div class="menu-item-desc" data-i18n="m_wasser_d">Still oder Sprudel</div>
-        <div class="menu-item-footer"><span class="menu-item-price">ab 1,50 €</span></div>
+      <div class="drink-row">
+        <div><div class="drink-row-name">Mineralwasser Sprudel</div></div>
+        <div class="drink-row-dots"></div>
+        <div class="drink-row-price">1,50 €</div>
       </div>
-      <img class="menu-item-img" src="images/wasser_hassia.png" alt="Mineralwasser" loading="lazy" onerror="this.style.display='none'">
     </div>
   </div>
 
