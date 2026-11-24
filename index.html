@@ -512,48 +512,46 @@ button { cursor: pointer; }
 /* Category strip */
 .mcs-strip {
   position: sticky; top: var(--nav-h); z-index: 40;
-  background: rgba(6,15,8,.97);
-  border-top: 1px solid rgba(201,168,76,.1);
-  border-bottom: 1px solid rgba(201,168,76,.14);
+  background: rgba(6,15,8,.98);
+  border-bottom: 1px solid rgba(201,168,76,.12);
   overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 24px rgba(0,0,0,.4);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 6px 30px rgba(0,0,0,.45);
 }
 .mcs-strip::-webkit-scrollbar { display: none; }
 .mcs-inner {
-  display: flex; padding: 0 2rem; min-width: max-content;
-  max-width: 1200px; margin: 0 auto; gap: .5rem;
-  align-items: center; height: 64px;
+  display: flex; padding: 0 2rem;
+  max-width: 1100px; margin: 0 auto;
+  align-items: stretch; height: 58px;
+  gap: 0;
 }
 .mcs-tab {
   flex-shrink: 0;
-  background: rgba(201,168,76,.06);
-  border: 1px solid rgba(201,168,76,.14);
-  border-radius: 999px;
+  background: none; border: none;
   font-family: 'Lato', sans-serif;
-  font-size: .68rem; font-weight: 600; letter-spacing: .12em;
+  font-size: .68rem; font-weight: 600; letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(244,234,204,.5);
-  padding: .45rem 1.1rem;
-  display: flex; align-items: center; gap: .4rem;
+  color: rgba(244,234,204,.38);
+  padding: 0 1.1rem;
+  display: flex; align-items: center; gap: .45rem;
   white-space: nowrap; cursor: pointer;
-  transition: background .2s, border-color .2s, color .2s, transform .15s;
+  position: relative;
+  transition: color .22s;
   -webkit-tap-highlight-color: transparent;
 }
-.mcs-tab-icon { font-size: .85rem; line-height: 1; }
-.mcs-tab:hover {
-  color: rgba(244,234,204,.88);
-  background: rgba(201,168,76,.1);
-  border-color: rgba(201,168,76,.3);
-  transform: translateY(-1px);
+.mcs-tab::after {
+  content: ''; position: absolute; bottom: 0; left: .6rem; right: .6rem;
+  height: 2px; background: var(--gold); border-radius: 2px 2px 0 0;
+  transform: scaleX(0); transition: transform .25s cubic-bezier(.4,0,.2,1);
 }
+.mcs-tab-icon { font-size: .8rem; line-height: 1; opacity: .6; transition: opacity .22s; }
+.mcs-tab:hover { color: rgba(244,234,204,.75); }
+.mcs-tab:hover .mcs-tab-icon { opacity: .8; }
 .mcs-tab.active {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #0a1a0c;
-  font-weight: 700;
-  box-shadow: 0 2px 14px rgba(201,168,76,.35);
+  color: var(--gold); font-weight: 700;
 }
+.mcs-tab.active .mcs-tab-icon { opacity: 1; }
+.mcs-tab.active::after { transform: scaleX(1); }
 
 /* Centered category container */
 .menu-cat {
@@ -651,8 +649,8 @@ button { cursor: pointer; }
   .menu-cat { padding: 0 1rem 1.5rem; }
   .menu-item { gap: 16px; padding: 16px 0; }
   .menu-item-img { width: 100px; height: 100px; }
-  .mcs-inner { padding: 0 1rem; height: 58px; }
-  .mcs-tab { padding: .4rem .85rem; font-size: .62rem; }
+  .mcs-inner { padding: 0 1rem; height: 52px; }
+  .mcs-tab { padding: 0 .85rem; font-size: .62rem; letter-spacing: .1em; }
 }
 
 
@@ -1224,7 +1222,6 @@ footer {
   <div class="featured-inner">
     <div class="featured-head">
       <span class="eyebrow" data-i18n="featured_eyebrow">Unsere Spezialitäten</span>
-      <h2 class="featured-title" data-i18n="featured_title">Gruppengerichte &amp; Klassiker</h2>
     </div>
 
     <div class="featured-showcase" id="featuredShowcase">
@@ -1274,34 +1271,13 @@ footer {
   <!-- Category tabs -->
   <nav class="mcs-strip" id="menuCatStrip" aria-label="Speisekarten-Kategorien">
     <div class="mcs-inner">
-      <button class="mcs-tab active" data-cat="vorspeisen">
-        <span class="mcs-tab-icon">🥗</span>
-        <span data-i18n="cat_vorspeisen">Vorspeisen</span>
-      </button>
-      <button class="mcs-tab" data-cat="doener">
-        <span class="mcs-tab-icon">🌯</span>
-        <span data-i18n="cat_doener">Döner</span>
-      </button>
-      <button class="mcs-tab" data-cat="grill">
-        <span class="mcs-tab-icon">🔥</span>
-        <span data-i18n="cat_grill">Grill</span>
-      </button>
-      <button class="mcs-tab" data-cat="hauptgerichte">
-        <span class="mcs-tab-icon">🍲</span>
-        <span data-i18n="cat_haupt">Hauptgerichte</span>
-      </button>
-      <button class="mcs-tab" data-cat="extra">
-        <span class="mcs-tab-icon">✦</span>
-        <span data-i18n="cat_extra">Extra</span>
-      </button>
-      <button class="mcs-tab" data-cat="desserts">
-        <span class="mcs-tab-icon">🍯</span>
-        <span data-i18n="cat_desserts">Desserts</span>
-      </button>
-      <button class="mcs-tab" data-cat="getraenke">
-        <span class="mcs-tab-icon">☕</span>
-        <span data-i18n="cat_getraenke">Getränke</span>
-      </button>
+      <button class="mcs-tab active" data-cat="vorspeisen" data-i18n="cat_vorspeisen">Vorspeisen</button>
+      <button class="mcs-tab" data-cat="doener" data-i18n="cat_doener">Döner</button>
+      <button class="mcs-tab" data-cat="grill" data-i18n="cat_grill">Grill</button>
+      <button class="mcs-tab" data-cat="hauptgerichte" data-i18n="cat_haupt">Hauptgerichte</button>
+      <button class="mcs-tab" data-cat="extra" data-i18n="cat_extra">Extra</button>
+      <button class="mcs-tab" data-cat="desserts" data-i18n="cat_desserts">Desserts</button>
+      <button class="mcs-tab" data-cat="getraenke" data-i18n="cat_getraenke">Getränke</button>
     </div>
   </nav>
 
