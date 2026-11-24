@@ -216,19 +216,28 @@ button { cursor: pointer; }
 .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--gold); transition: transform .3s, opacity .3s; border-radius: 1px; }
 
 @media (max-width: 860px) {
-  .nav { padding: 0 1rem; }
+  :root { --nav-h: 66px; }
+  .nav { padding: 0 1rem; height: var(--nav-h); }
   .nav-left a { display: none; }
   .nav-left .nav-hamburger { display: flex; }
   .nav-tel span { display: none; }
-  .nav-logo-name { font-size: 1.45rem !important; letter-spacing: .36em !important; }
-  .nav-logo-sub  { font-size: .78rem !important; letter-spacing: .38em !important; }
-  .nav-logo-img  { height: 62px !important; }
+  .nav-logo-name { font-size: 1.25rem !important; letter-spacing: .28em !important; }
+  .nav-logo-sub  { font-size: .68rem !important; letter-spacing: .32em !important; }
+  .nav-logo-img  { height: 48px !important; }
+  .nav-logo { gap: .4rem; }
 }
 @media (max-width: 480px) {
-  .nav-logo-img  { height: 50px !important; }
-  .nav-logo-name { font-size: 1.25rem !important; letter-spacing: .3em !important; }
-  .nav-logo-sub  { font-size: .7rem !important; }
-  .nav-tel { display: none; }
+  :root { --nav-h: 56px; }
+  .nav { height: var(--nav-h); padding: 0 .75rem; }
+  .nav-logo-img  { height: 36px !important; }
+  .nav-logo-name { font-size: 1rem !important; letter-spacing: .22em !important; }
+  .nav-logo-sub  { display: none !important; }
+  .nav-logo      { gap: .35rem; }
+  .nav-tel       { display: none; }
+  .lang-sel-trigger { height: 28px; padding: .18rem .5rem .18rem .38rem; gap: .32rem; font-size: .9rem; }
+  #langFlag      { font-size: .92rem; }
+  #langCurrent   { font-size: .58rem; letter-spacing: .08em; }
+  .lang-sel-trigger svg { width: 8px; height: 8px; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -391,18 +400,31 @@ button { cursor: pointer; }
 
 /* Handy */
 @media (max-width: 860px) {
-  .hero { min-height: 52vh; }
+  .hero { min-height: 50vh; }
   .hero-content { padding: .5rem 1.5rem 0; }
-  .hero-name { font-size: clamp(2.8rem, 11vw, 5rem); }
-  .hero-cta { justify-content: center; }
-  .hero-sup { margin-bottom: .7rem; }
-  .hero-orn { margin: .8rem 0 .6rem; }
-  .hero-tagline { margin-bottom: 1.2rem; }
+  .hero-name { font-size: clamp(2.6rem, 10vw, 4.8rem); }
+  .hero-cta { justify-content: center; gap: .7rem; }
+  .hero-sup { margin-bottom: .6rem; }
+  .hero-orn { margin: .6rem 0 .5rem; }
+  .hero-tagline { margin-bottom: 1rem; }
 }
 @media (max-width: 600px) {
-  .hero { min-height: 48vh; }
-  .hero-name { font-size: clamp(2.4rem, 13vw, 4rem); }
-  .hero-bottom { padding-bottom: 1.2rem; gap: .5rem; }
+  .hero { min-height: 46vh; }
+  .hero-name { font-size: clamp(2.2rem, 12vw, 3.5rem); }
+  .hero-bottom { padding-bottom: 1rem; gap: .4rem; }
+  .hero-content { padding: .3rem 1.2rem 0; }
+}
+@media (max-width: 480px) {
+  .hero { min-height: 44vh; }
+  .hero-name { font-size: clamp(2rem, 11.5vw, 3rem); }
+  .hero-cta { flex-direction: column; align-items: center; gap: .6rem; width: 100%; padding: 0 .5rem; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline { width: 100%; max-width: 320px; text-align: center; padding: .75rem 1.4rem; justify-content: center; display: flex; }
+  .hero-sup { font-size: clamp(.48rem, 2.2vw, .6rem); letter-spacing: .35em; }
+  .hero-sub  { font-size: clamp(.68rem, 3vw, .9rem); letter-spacing: .3em; }
+  .hero-orn  { font-size: .5rem; margin: .5rem 0 .4rem; }
+  .hero-scroll-btn span { font-size: .48rem; }
+  .hero-location { font-size: .52rem; letter-spacing: .28em; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -501,7 +523,15 @@ button { cursor: pointer; }
 
 @media (max-width: 600px) {
   .featured-slide img { width: 200px; height: 200px; }
-  .featured-sec { padding: 3.5rem 1.2rem 3.5rem; }
+  .featured-sec { padding: 3rem 1.2rem 3rem; }
+  .featured-head { margin-bottom: 2rem; }
+  .featured-slide-desc { font-size: .92rem; max-width: 100%; }
+  .featured-slide-name { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+}
+@media (max-width: 480px) {
+  .featured-slide img { width: 170px; height: 170px; }
+  .featured-sec { padding: 2.5rem 1rem 2.5rem; }
+  .featured-slide { gap: .6rem; padding: .3rem .5rem 1rem; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -647,10 +677,25 @@ button { cursor: pointer; }
 
 @media (max-width: 600px) {
   .menu-cat { padding: 0 1rem 1.5rem; }
-  .menu-item { gap: 16px; padding: 16px 0; }
+  .menu-item { gap: 14px; padding: 14px 0; }
   .menu-item-img { width: 100px; height: 100px; }
-  .mcs-inner { padding: 0 1rem; height: 52px; }
-  .mcs-tab { padding: 0 .85rem; font-size: .62rem; letter-spacing: .1em; }
+  .menu-item-name { font-size: clamp(1.1rem, 4.5vw, 1.4rem); }
+  .menu-item-desc { font-size: .92rem; }
+  .menu-item-price { font-size: 1rem; }
+  .mcs-inner { padding: 0 .8rem; height: 50px; }
+  .mcs-tab { padding: 0 .7rem; font-size: .6rem; letter-spacing: .08em; }
+  .menu-sec-head { padding: 2.8rem .5rem 1rem; }
+}
+@media (max-width: 480px) {
+  .menu-item { gap: 10px; padding: 12px 0; }
+  .menu-item-img { width: 80px; height: 80px; }
+  .menu-item-name { font-size: clamp(1rem, 4.2vw, 1.3rem); }
+  .menu-sec-head { padding: 2.2rem .5rem .8rem; }
+  .drink-section-img { width: 54px; height: 54px; }
+  .drink-section-title { font-size: 1.25rem; }
+  .drink-row-name { font-size: 1.05rem; }
+  .drink-row { padding: .75rem 0; }
+  .drink-row-price { font-size: .76rem; padding: .18rem .65rem; }
 }
 
 
@@ -778,8 +823,13 @@ button { cursor: pointer; }
   color: var(--gold); display: block; margin-bottom: .5rem;
 }
 .catering-card p { font-size: .9rem; color: rgba(244,234,204,.55); line-height: 1.7; }
-@media (max-width: 700px) {
+@media (max-width: 860px) {
+  .catering-cards { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .catering-inner { padding: 0 1.5rem; }
+}
+@media (max-width: 600px) {
   .catering-cards { grid-template-columns: 1fr; gap: .8rem; }
+  .catering-sec { padding: 3rem 0; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -910,11 +960,14 @@ button { cursor: pointer; }
 
 @media (max-width: 860px) {
   .info-strip { grid-template-columns: 1fr; }
-  .info-cell { border-left: none; border-top: 1px solid var(--bone); padding: 2.4rem 2rem; }
+  .info-cell { border-left: none; border-top: 1px solid var(--bone); padding: 2.2rem 2rem; }
   .info-cell:first-child { border-top: none; }
 }
 @media (max-width: 480px) {
-  .info-cell { padding: 1.8rem 1.4rem; }
+  .info-cell { padding: 1.6rem 1.2rem; }
+  .hours-row { font-size: .82rem; }
+  .contact-row { font-size: .82rem; }
+  .social-row { gap: .8rem; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -1000,11 +1053,15 @@ footer {
 .footer-legal a:hover { color: var(--gold); }
 
 @media (max-width: 860px) {
-  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 2.5rem 2rem 3rem; }
+  .footer-inner { padding: 2rem 1.5rem 2.5rem; }
+  .footer-top-bar { padding: 2rem 1.5rem 1.8rem; }
+  .footer-top-name { font-size: clamp(2rem, 10vw, 4rem); }
 }
 @media (max-width: 480px) {
-  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { padding: 1rem 1.4rem 1.5rem; }
+  .footer-inner { padding: 1.5rem 1.2rem 2rem; }
+  .footer-bottom { padding: 1rem 1.2rem 1.4rem; flex-direction: column; align-items: center; text-align: center; gap: .6rem; }
+  .footer-top-bar { padding: 1.5rem 1.2rem 1.4rem; }
+  .footer-top-name { font-size: clamp(1.8rem, 9vw, 3rem); letter-spacing: .05em; }
   footer { padding-bottom: calc(0px + env(safe-area-inset-bottom, 0px)); }
 }
 
@@ -1233,23 +1290,21 @@ footer {
         <span class="featured-slide-price">ab 24,99 €</span>
       </div>
       <div class="featured-slide">
-        <img src="images/palau_kishmish.png" alt="Kabuli Palau" loading="eager">
-        <span class="featured-slide-badge">Nationalgericht</span>
+        <img src="images/objekt_20.png" alt="Kabuli Palau" loading="eager">
         <div class="featured-slide-name">Kabuli Palau</div>
         <div class="featured-slide-desc">Reis mit zartem Kalbfleisch, karamellisierten Karotten &amp; Rosinen — das Herzstück afghanischer Küche</div>
         <span class="featured-slide-price">auf Anfrage</span>
       </div>
       <div class="featured-slide">
         <img src="images/biryani.png" alt="Biryani" loading="eager">
-        <span class="featured-slide-badge">Klassiker</span>
         <div class="featured-slide-name">Biryani</div>
         <div class="featured-slide-desc">Duftender Basmati-Reis mit Hähnchen, Safran &amp; traditionellen Gewürzen nach Familienrezept</div>
         <span class="featured-slide-price">ab 14,99 €</span>
       </div>
     </div>
 
-    <div class="featured-progress"><div class="featured-progress-bar" id="featuredBar"></div></div>
-    <div class="featured-dots" id="featuredDots">
+    <div class="featured-progress" style="display:none"><div class="featured-progress-bar" id="featuredBar"></div></div>
+    <div class="featured-dots" id="featuredDots" style="display:none">
       <button class="featured-dot active" aria-label="Gericht 1"></button>
       <button class="featured-dot" aria-label="Gericht 2"></button>
       <button class="featured-dot" aria-label="Gericht 3"></button>
@@ -1357,7 +1412,7 @@ footer {
           <span class="menu-item-price">7,99 €</span>
         </div>
       </div>
-      <img class="menu-item-img" src="images/doener_kebap.png" alt="Döner Kebap" loading="lazy" onerror="this.style.display='none'">
+      <img class="menu-item-img" src="images/doener_kebap.png" alt="Döner Kebap" loading="lazy" onerror="this.style.display='none'" style="transform:rotate(-12deg) scale(1.1)">
     </div>
     <div class="menu-item">
       <div class="menu-item-info">
@@ -2093,14 +2148,18 @@ drawer.querySelectorAll('.mob-links a').forEach(a => a.addEventListener('click',
 const tabs     = document.querySelectorAll('.mcs-tab');
 const cats     = document.querySelectorAll('.menu-cat');
 const strip    = document.getElementById('menuCatStrip');
-const NAV_H    = 90 + 64 + 4; // nav (90px) + strip (64px) + offset
+function getNavOffset() {
+  var nav = document.querySelector('.nav');
+  var catStrip = document.getElementById('menuCatStrip');
+  return (nav ? nav.offsetHeight : 90) + (catStrip ? catStrip.offsetHeight : 58) + 4;
+}
 
 tabs.forEach(tab => {
   tab.addEventListener('click', function() {
     const id  = 'cat-' + this.dataset.cat;
     const el  = document.getElementById(id);
     if (!el) return;
-    const y = el.getBoundingClientRect().top + window.scrollY - NAV_H;
+    const y = el.getBoundingClientRect().top + window.scrollY - getNavOffset();
     window.scrollTo({ top: y, behavior: 'smooth' });
   });
 });
@@ -2111,7 +2170,7 @@ window.addEventListener('scroll', function() {
   if (ticking) return;
   ticking = true;
   requestAnimationFrame(function() {
-    const scrollY = window.scrollY + NAV_H + 10;
+    const scrollY = window.scrollY + getNavOffset() + 10;
     let active = cats[0];
     cats.forEach(function(c) { if (c.offsetTop <= scrollY) active = c; });
     const catId = active.id.replace('cat-', '');
