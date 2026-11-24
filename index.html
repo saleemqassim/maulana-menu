@@ -408,71 +408,100 @@ button { cursor: pointer; }
 /* ══════════════════════════════════════════════════════
    FEATURED DISHES — Gruppengerichte Karten (unter Hero)
 ══════════════════════════════════════════════════════ */
+/* ── Featured Showcase Slider ── */
 .featured-sec {
   background: #0a1d0d;
-  padding: 5rem 2rem 6rem;
+  padding: 5rem 2rem 5rem;
   border-bottom: 1px solid rgba(201,168,76,.14);
+  overflow: hidden;
 }
-.featured-inner {
-  max-width: 1100px; margin: 0 auto;
-}
-.featured-head {
-  text-align: center; margin-bottom: 3.5rem;
-}
+.featured-inner { max-width: 700px; margin: 0 auto; }
+.featured-head { text-align: center; margin-bottom: 3rem; }
 .featured-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; font-style: italic;
   color: var(--gold); letter-spacing: .06em; margin-top: .5rem;
 }
-.featured-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+
+/* Stack all slides in same grid cell */
+.featured-showcase {
+  display: grid; grid-template-areas: "stack";
+  position: relative;
 }
-.featured-card {
-  display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
-  padding: 2rem 1rem 1.5rem;
-  background: rgba(10,29,13,.8);
-  border: 1px solid rgba(201,168,76,.15);
-  border-radius: 4px;
-  transition: border-color .25s, background .25s;
-  text-align: center;
+.featured-slide {
+  grid-area: stack;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: .8rem; padding: .5rem 1rem 1.5rem;
+  opacity: 0; transform: translateY(28px) scale(.97);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
 }
-.featured-card:hover {
-  border-color: rgba(201,168,76,.35);
-  background: rgba(10,29,13,.95);
+.featured-slide.fs-active {
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
-.featured-card img {
-  width: 180px; height: 180px; object-fit: contain;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,.55));
-  transition: transform .4s ease;
+.featured-slide.fs-exit {
+  opacity: 0; transform: translateY(-18px) scale(.98);
+  transition: opacity .4s ease, transform .4s ease;
 }
-.featured-card:hover img { transform: translateY(-6px) scale(1.04); }
-.featured-card-name {
+.featured-slide img {
+  width: 220px; height: 220px; object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.6))
+          drop-shadow(0 0 60px rgba(201,168,76,.12));
+  animation: floatDish 5s ease-in-out infinite;
+}
+@keyframes floatDish {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.featured-slide-badge {
+  font-family: 'Lato', sans-serif; font-size: .56rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.22); border-radius: 999px;
+  padding: .28rem .9rem;
+}
+.featured-slide-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem; font-weight: 400; font-style: italic;
-  color: #f4eacc; line-height: 1.2;
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; font-style: italic;
+  color: #f4eacc; line-height: 1.1; margin: 0;
 }
-.featured-card-desc {
+.featured-slide-desc {
   font-family: 'Cormorant Garamond', serif;
-  font-size: .95rem; font-style: italic;
+  font-size: 1rem; font-style: italic;
   color: rgba(244,234,204,.5); line-height: 1.6;
+  max-width: 480px;
 }
-.featured-card-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; font-weight: 600;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.28);
-  border-radius: 8px; padding: 3px 14px;
+.featured-slide-price {
+  font-family: 'Lato', sans-serif; font-size: .78rem; font-weight: 700;
+  letter-spacing: .08em; color: var(--gold);
+  border: 1px solid rgba(201,168,76,.3); border-radius: 999px;
+  padding: .3rem 1.1rem; margin-top: .2rem;
 }
 
-@media (max-width: 860px) {
-  .featured-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-  .featured-card img { width: 140px; height: 140px; }
+/* Progress + dots */
+.featured-progress {
+  height: 1px; background: rgba(201,168,76,.12);
+  margin: 2rem 0 1.2rem; border-radius: 1px; overflow: hidden;
 }
-@media (max-width: 480px) {
-  .featured-grid { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
-  .featured-sec { padding: 3rem 1rem; }
-  .featured-card { padding: 1.2rem .8rem 1rem; }
-  .featured-card img { width: 110px; height: 110px; }
+.featured-progress-bar {
+  height: 100%; width: 0; background: var(--gold);
+  border-radius: 1px;
+}
+.featured-dots {
+  display: flex; gap: .6rem; justify-content: center;
+}
+.featured-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(201,168,76,.2); cursor: pointer;
+  transition: background .3s, transform .3s;
+  border: none; padding: 0;
+}
+.featured-dot.active { background: var(--gold); transform: scale(1.5); }
+
+@media (max-width: 600px) {
+  .featured-slide img { width: 160px; height: 160px; }
+  .featured-sec { padding: 3.5rem 1.2rem 3.5rem; }
 }
 
 /* ══════════════════════════════════════════════════════
@@ -1197,31 +1226,44 @@ footer {
       <span class="eyebrow" data-i18n="featured_eyebrow">Unsere Spezialitäten</span>
       <h2 class="featured-title" data-i18n="featured_title">Gruppengerichte &amp; Klassiker</h2>
     </div>
-    <div class="featured-grid">
-      <div class="featured-card">
+
+    <div class="featured-showcase" id="featuredShowcase">
+      <div class="featured-slide">
         <img src="images/palau_kishmish.png" alt="Kabuli Palau" loading="eager">
-        <div class="featured-card-name">Kabuli Palau</div>
-        <div class="featured-card-desc">Das Nationalgericht — Reis mit Kalbfleisch, Karotten &amp; Rosinen</div>
-        <span class="featured-card-price">auf Anfrage</span>
+        <span class="featured-slide-badge">Nationalgericht</span>
+        <div class="featured-slide-name">Kabuli Palau</div>
+        <div class="featured-slide-desc">Reis mit zartem Kalbfleisch, karamellisierten Karotten &amp; Rosinen — das Herzstück afghanischer Küche</div>
+        <span class="featured-slide-price">auf Anfrage</span>
       </div>
-      <div class="featured-card">
+      <div class="featured-slide">
         <img src="images/mix_grill_4.png" alt="Mix Grill" loading="eager">
-        <div class="featured-card-name">Mix Grill</div>
-        <div class="featured-card-desc">Gemischte Grillplatte mit Kebab, Hähnchen &amp; Lammspieß</div>
-        <span class="featured-card-price">ab 24,99 €</span>
+        <span class="featured-slide-badge">Bestseller</span>
+        <div class="featured-slide-name">Mix Grill</div>
+        <div class="featured-slide-desc">Gemischte Grillplatte mit Lammkebab, Hähnchenbrust &amp; Lammspieß — frisch vom Holzkohlegrill</div>
+        <span class="featured-slide-price">ab 24,99 €</span>
       </div>
-      <div class="featured-card">
+      <div class="featured-slide">
         <img src="images/biryani.png" alt="Biryani" loading="eager">
-        <div class="featured-card-name">Biryani</div>
-        <div class="featured-card-desc">Afghaner Biryani mit Hähnchen, Safran &amp; aromatischen Gewürzen</div>
-        <span class="featured-card-price">ab 14,99 €</span>
+        <span class="featured-slide-badge">Klassiker</span>
+        <div class="featured-slide-name">Biryani</div>
+        <div class="featured-slide-desc">Duftender Basmati-Reis mit Hähnchen, Safran &amp; traditionellen Gewürzen nach Familienrezept</div>
+        <span class="featured-slide-price">ab 14,99 €</span>
       </div>
-      <div class="featured-card">
+      <div class="featured-slide">
         <img src="images/pacha.png" alt="Pacha" loading="eager" onerror="this.src='images/objekt_17.png'">
-        <div class="featured-card-name">Pacha</div>
-        <div class="featured-card-desc">Zartes Schafskopffleisch, langsam gekocht — eine Spezialität für Kenner</div>
-        <span class="featured-card-price">ab 19,99 €</span>
+        <span class="featured-slide-badge">Spezialität</span>
+        <div class="featured-slide-name">Pacha</div>
+        <div class="featured-slide-desc">Zartes Schafskopffleisch, stundenlang langsam geschmort — eine Delikatesse für wahre Kenner</div>
+        <span class="featured-slide-price">ab 19,99 €</span>
       </div>
+    </div>
+
+    <div class="featured-progress"><div class="featured-progress-bar" id="featuredBar"></div></div>
+    <div class="featured-dots" id="featuredDots">
+      <button class="featured-dot active" aria-label="Gericht 1"></button>
+      <button class="featured-dot" aria-label="Gericht 2"></button>
+      <button class="featured-dot" aria-label="Gericht 3"></button>
+      <button class="featured-dot" aria-label="Gericht 4"></button>
     </div>
   </div>
 </section>
@@ -2013,6 +2055,47 @@ footer {
 </a>
 
 <script>
+/* ── Featured Dish Slider ── */
+(function() {
+  var slides = document.querySelectorAll('.featured-slide');
+  var dots   = document.querySelectorAll('.featured-dot');
+  var bar    = document.getElementById('featuredBar');
+  if (!slides.length) return;
+  var cur = 0, timer, DURATION = 4200;
+
+  function show(i, dir) {
+    var prev = cur;
+    slides[prev].classList.remove('fs-active');
+    slides[prev].classList.add('fs-exit');
+    setTimeout(function() { slides[prev].classList.remove('fs-exit'); }, 450);
+    dots[prev].classList.remove('active');
+    cur = (i + slides.length) % slides.length;
+    slides[cur].classList.add('fs-active');
+    dots[cur].classList.add('active');
+    if (bar) {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          bar.style.transition = 'width ' + DURATION + 'ms linear';
+          bar.style.width = '100%';
+        });
+      });
+    }
+  }
+
+  dots.forEach(function(d, i) {
+    d.addEventListener('click', function() {
+      clearInterval(timer);
+      show(i);
+      timer = setInterval(function() { show(cur + 1); }, DURATION);
+    });
+  });
+
+  show(0);
+  timer = setInterval(function() { show(cur + 1); }, DURATION);
+})();
+
 /* ── Immer oben starten ── */
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
